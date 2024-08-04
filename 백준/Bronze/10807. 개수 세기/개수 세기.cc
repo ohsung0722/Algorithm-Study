@@ -5,23 +5,17 @@ int main(void){
     ios::sync_with_stdio(0);
     cin.tie(0);
 
-    int N;
+    int N, v, a[201] = {};
     cin >> N;
 
-    int a[101];
-    for(int i = 0; i < N; i++){
-        cin >> a[i];
+    int temp = N;
+    while(temp > 0){
+        int b;
+        cin >> b;
+        a[b + 100]++;
+        temp--;
     }
 
-    int v;
     cin >> v;
-
-    int cnt = 0;
-    for(int i = 0; i < N; i++){
-        if(v == a[i]){
-            cnt++;
-        }
-    }
-
-    cout << cnt;
+    cout << a[v + 100];
 }
