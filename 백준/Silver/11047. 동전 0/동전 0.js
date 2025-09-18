@@ -15,7 +15,7 @@ for (let i = 1; i < n + 1; i++) {
 
 let restCoin = k;
 let count = 0;
-for (let i = n; i >= 0; i--) {
+for (let i = n - 1; i >= 0; i--) {
   if (restCoin === 0) {
     break;
   }
@@ -23,10 +23,8 @@ for (let i = n; i >= 0; i--) {
     continue;
   }
 
-  while (array[i] <= restCoin) {
-    restCoin -= array[i];
-    count++;
-  }
+  count += Math.floor(restCoin / array[i]);
+  restCoin %= array[i];
 }
 
 console.log(count);
