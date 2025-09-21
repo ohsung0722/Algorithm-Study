@@ -3,16 +3,16 @@ const filePath =
   process.platform === "linux" ? "dev/stdin" : "Baekjoon/B13305/input.txt";
 const input = fs.readFileSync(filePath).toString().trim().split("\n");
 
-let minValue = 1000000000;
+let minValue = BigInt(1000000000);
 let city = input[2].split(" ").map(Number);
 let distance = input[1].split(" ").map(Number);
-let res = 0;
+let res = BigInt(0);
 
 for (let i = 0; i < distance.length; i++) {
-  if (minValue > city[i]) {
-    minValue = city[i];
+  if (minValue > BigInt(city[i])) {
+    minValue = BigInt(city[i]);
   }
-  res += minValue * distance[i];
+  res += minValue * BigInt(distance[i]);
 }
 
-console.log(res);
+console.log(String(res));
