@@ -9,7 +9,7 @@ for (let i = 1; i <= n; i++) {
   array.push(input[i].split(" ").map(Number));
 }
 
-let minValue = BigInt(0);
+let minValue = 0;
 let count = 0;
 
 array.sort((a, b) => {
@@ -18,8 +18,8 @@ array.sort((a, b) => {
 });
 
 for (let i = 0; i < n; i++) {
-  if (minValue <= BigInt(array[i][0])) {
-    minValue = BigInt(array[i][1]);
+  if (minValue <= array[i][0]) {
+    minValue = array[i][1];
     count++;
   }
 }
