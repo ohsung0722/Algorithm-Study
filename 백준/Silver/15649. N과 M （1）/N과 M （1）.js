@@ -1,46 +1,36 @@
 const fs = require("fs");
 const filePath =
-  process.platform === "linux" ? "dev/stdin" : "Baekjoon/B15649/input.txt";
-const input = fs.readFileSync(filePath).toString().trim().split(" ");
+  process.platform === "linux" ? "dev/stdin" : "Baekjoon/B/input.txt";
+const input = fs.readFileSync(filePath).toString().trim().split("\n");
 
-const N = Number(input[0]);
-const M = Number(input[1]);
-let arr = [];
-
-for (let i = 1; i <= N; i++) {
-  arr.push(i);
+let [n, m] = input[0].split(" ").map(Number);
+let array = new Array();
+for (let i = 1; i <= n; i++) {
+  array.push(i);
 }
 
-let visited = new Array(N).fill(false);
-let select = [];
+let visited = new Array(n).fill(false);
+let selected = [];
 
 let answer = "";
 function dfs(arr, depth) {
-  if (depth === M) {
+  if (depth === m) {
     let result = [];
-    for (let i of select) {
-      result.push(arr[i]);
-    }
-    for (let i of result) {
-      answer += i + " ";
-    }
+    for (let i of selected) result.push(arr[i]);
+    for (let i of result) answer += i + " ";
     answer += "\n";
     return;
   }
 
-  for (let i = 0; i < N; i++) {
-    if (visited[i]) {
-      continue;
-    }
-
+  for (let i = 0; i < arr.length; i++) {
+    if (visited[i]) continue;
     visited[i] = true;
-    select.push(i);
+    selected.push(i);
     dfs(arr, depth + 1);
-    select.pop(i);
+    selected.pop();
     visited[i] = false;
   }
 }
 
-dfs(arr, 0);
-
+dfs(array, 0);
 console.log(answer);
