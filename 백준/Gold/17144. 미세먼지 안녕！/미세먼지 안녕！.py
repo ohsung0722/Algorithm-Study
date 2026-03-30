@@ -1,6 +1,3 @@
-import sys
-input = sys.stdin.readline
-
 r, c, t = map(int, input().split())
 graph = [list(map(int, input().split())) for _ in range(r)]
 
